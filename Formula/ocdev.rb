@@ -4,6 +4,11 @@ class Ocdev < Formula
   url "https://github.com/redhat-developer/ocdev/archive/v0.0.1.tar.gz"
   sha256 "fc623492b1542ff9af9260765de4574f3b8479e2ebd2d71c46dd2584bc9e35f7"
 
+  head do
+    url "https://github.com/redhat-developer/ocdev.git"
+  end
+
+
   depends_on "go" => :build
   depends_on "openshift-cli" => :run
 
