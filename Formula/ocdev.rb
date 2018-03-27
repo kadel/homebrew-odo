@@ -1,8 +1,8 @@
 class Ocdev < Formula
   desc "OpenShift Command-line for Developers"
   homepage "https://github.com/redhat-developer/ocdev"
-  url "https://github.com/redhat-developer/ocdev/archive/v0.0.2.tar.gz"
-  sha256 "36bb37ff5301fe4df8d88da29e8ac0010ef0423c9f917e579f779fca300d48d3"
+  url "https://github.com/redhat-developer/ocdev/archive/v0.0.3.tar.gz"
+  sha256 "b06f7071927b3c66a53d8e68cf4afc4ee8feebd295727f12f5dead7ca1c6efe3"
 
   head do
     url "https://github.com/redhat-developer/ocdev.git"
@@ -10,7 +10,7 @@ class Ocdev < Formula
 
 
   depends_on "go" => :build
-  depends_on "openshift-cli" => :run
+  depends_on "openshift-cli"
 
   def install
     ENV["GOPATH"] = buildpath
