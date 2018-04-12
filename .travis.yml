@@ -2,9 +2,9 @@ language: go
 os: osx
 install:
   - mkdir -p $(brew --repo)/Library/Taps/travis
-  - ln -s $PWD $(brew --repo)/Library/Taps/travis/homebrew-ocdev
+  - ln -s $PWD $(brew --repo)/Library/Taps/travis/homebrew-odo
   - brew tap --repair
 script:
-  - brew audit ocdev
-  - brew install -v ocdev
-  - brew test ocdev
+  - brew audit odo
+  - brew install -v odo
+  - brew test odo
