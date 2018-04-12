@@ -1,4 +1,4 @@
-class Ocdev < Formula
+class Odo < Formula
   desc "OpenShift Command-line for Developers"
   homepage "https://github.com/redhat-developer/odo"
   url "https://github.com/redhat-developer/odo/archive/v0.0.3.tar.gz"
