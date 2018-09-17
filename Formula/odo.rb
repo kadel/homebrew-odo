@@ -1,8 +1,8 @@
 class Odo < Formula
   desc "OpenShift Command-line for Developers"
   homepage "https://github.com/redhat-developer/odo"
-  url "https://github.com/redhat-developer/odo/archive/v0.0.10.tar.gz"
-  sha256 "cb810e6e125b7bd5cd9d5ca6ef94f2b188260063f98a59e88d8bc7101cf1ebac"
+  url "https://github.com/redhat-developer/odo/archive/v0.0.11.tar.gz"
+  sha256 "9c30ea368e4984d683109e0771f2f218a4989fd789d6f5d257b87f8f81ecc505"
 
   head do
     url "https://github.com/redhat-developer/odo.git"
