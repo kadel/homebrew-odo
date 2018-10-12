@@ -4,7 +4,7 @@
 
 OpenShift Command line for Developers
 
-This is Homebrew Formula for ocdev (https://github.com/redhat-developer/odo)
+This is Homebrew Formula for odo (https://github.com/redhat-developer/odo)
 
 
 ## Installation
