@@ -14,10 +14,11 @@ class Odo < Formula
 
   def install
     ENV["GOPATH"] = buildpath
-    (buildpath/"src/github.com/redhat-developer").mkpath
-    ln_s buildpath, buildpath/"src/github.com/redhat-developer/odo"
-    system "make", "bin"
-    bin.install "odo"
+    (buildpath/"src/github.com/redhat-developer/odo").install buildpath.children
+    cd buildpath/"src/github.com/redhat-developer/odo" do
+      system "make", "bin"
+      bin.install "odo"
+    end
   end
 
   test do
