@@ -4,6 +4,7 @@ class Odo < Formula
   url "https://github.com/redhat-developer/odo/archive/v0.0.17.tar.gz"
   sha256 "5ae4c6cfa436d4f5d1e3f498ac376114b9742a3ce33fe9214135859e385dcf0b"
 
+
   head do
     url "https://github.com/redhat-developer/odo.git"
   end
