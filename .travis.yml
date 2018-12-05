@@ -1,10 +1,11 @@
 language: go
 os: osx
 install:
-  - mkdir -p $(brew --repo)/Library/Taps/travis
-  - ln -s $PWD $(brew --repo)/Library/Taps/travis/homebrew-odo
+  - mkdir -p $(brew --repo)/Library/Taps/kadel
+  - ln -s $PWD $(brew --repo)/Library/Taps/kadel/homebrew-odo
   - brew tap --repair
 script:
-  - brew audit odo
-  - brew install -v odo
-  - brew test odo
+  - brew audit kadel/odo/odo
+  - brew install -v kadel/odo/odo
+  - brew test  kadel/odo/odo
+  
