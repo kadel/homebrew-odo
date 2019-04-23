@@ -1,19 +1,21 @@
 class Odo < Formula
   desc "OpenShift Command-line for Developers"
-  homepage "https://github.com/redhat-developer/odo"
-  url "https://github.com/redhat-developer/odo/archive/v0.0.20.tar.gz"
-  sha256 "4d6f9040a947c0e82aa3a0b764ffd5f339c16ec6a87044d2a148157d39374706"
+  homepage "https://github.com/openshift/odo"
 
-  head do
-    url "https://github.com/redhat-developer/odo.git"
-  end
+  url "https://github.com/openshift/odo.git",
+      :tag      => "v1.0.0-beta1",
+      :revision => "c226b008cb945a24227da90f4e8e87c86c7d3b80",
+      :shallow  => false
+
+  head "https://github.com/openshift/odo.git",
+      :shallow  => false
 
   depends_on "go" => :build
 
   def install
     ENV["GOPATH"] = buildpath
-    (buildpath/"src/github.com/redhat-developer/odo").install buildpath.children
-    cd buildpath/"src/github.com/redhat-developer/odo" do
+    (buildpath/"src/github.com/openshift/odo").install buildpath.children
+    cd buildpath/"src/github.com/openshift/odo" do
       system "make", "bin"
       bin.install "odo"
     end
@@ -21,7 +23,8 @@ class Odo < Formula
 
   test do
     # all other odo commands require running OpenShift cluster
-    shell_output("#{bin}/odo version --client || true")
+    assert_match /^odo v#{version}/, shell_output("#{bin}/odo version --client")
+    
   end
 end
 
