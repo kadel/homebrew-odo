@@ -1,15 +1,12 @@
-# odo
+# Homebrew Formulae for odo
 
 [![Build Status](https://travis-ci.org/kadel/homebrew-odo.svg?branch=master)](https://travis-ci.org/kadel/homebrew-odo)
 
-OpenShift Command line for Developers
-
-This is Homebrew Formula for odo (https://github.com/redhat-developer/odo)
-
+This is the Homebrew formulae for [`OpenShift Do (odo)`](https://github.com/openshift/odo),
+the developer-focused command line tool for OpenShift.
 
 ## Installation
 ```
 brew tap kadel/odo
 brew install kadel/odo/odo
 ```
-
