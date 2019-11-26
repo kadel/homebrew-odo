@@ -4,7 +4,7 @@ class Odo < Formula
 
   url "https://github.com/openshift/odo.git",
       tag: "v1.0.1",
-      revision: "c4189c00fe3d893e2750b0d2d0fdc2bfa56c5029",
+      revision: "a95bd7bb496f96ce39719c71584988ccbd215646",
       shallow: false
 
   head "https://github.com/openshift/odo.git",
