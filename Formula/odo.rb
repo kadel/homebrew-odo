@@ -3,12 +3,14 @@ class Odo < Formula
   homepage "https://github.com/openshift/odo"
 
   url "https://github.com/openshift/odo.git",
-      tag: "v1.0.1",
-      revision: "c4189c00fe3d893e2750b0d2d0fdc2bfa56c5029",
+      tag: "v1.0.2",
+      revision: "e31e7172a54a089e4d6385ea8e241445f4887354",
       shallow: false
 
   head "https://github.com/openshift/odo.git",
-       shallow: false
+      tag: "v1.0.2",
+      revision: "e31e7172a54a089e4d6385ea8e241445f4887354",
+      shallow: false
 
   depends_on "go" => :build
 
