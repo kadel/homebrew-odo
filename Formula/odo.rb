@@ -3,12 +3,10 @@ class Odo < Formula
   homepage "https://github.com/openshift/odo"
 
   url "https://github.com/openshift/odo.git",
-      tag: "v1.0.1",
-      revision: "c4189c00fe3d893e2750b0d2d0fdc2bfa56c5029",
-      shallow: false
+  :tag      => "v1.1.0",
+  :revision => "86c7e2c93d095330736d977d095b307c5d4dd2b8"
 
-  head "https://github.com/openshift/odo.git",
-       shallow: false
+  head "https://github.com/openshift/odo.git"
 
   depends_on "go" => :build
 
@@ -29,6 +27,5 @@ class Odo < Formula
     short_rev = stable.instance_variable_get(:@resource).instance_variable_get(:@specs)[:revision].slice(0, 8)
     assert_match tag, version_output
     assert_match short_rev, version_output
-
   end
 end
