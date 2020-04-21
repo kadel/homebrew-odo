@@ -3,8 +3,8 @@ class Odo < Formula
   homepage "https://github.com/openshift/odo"
   
   url "https://github.com/openshift/odo.git",
-  :tag      => "v1.1.1",
-  :revision => "02fbd3d08709f06e0e191f336851d1f699ed5536"
+  :tag      => "v1.1.2",
+  :revision => "f7fcb5396071876100066411551e4ff829c29d74"
   
   head "https://github.com/openshift/odo.git"
 
