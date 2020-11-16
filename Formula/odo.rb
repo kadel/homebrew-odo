@@ -23,9 +23,8 @@ class Odo < Formula
     # test version
     version_output = shell_output("#{bin}/odo version 2>&1").strip
     tag = stable.instance_variable_get(:@resource).instance_variable_get(:@specs)[:tag]
-    short_rev = stable.instance_variable_get(:@resource).instance_variable_get(:@specs)[:revision].slice(0, 8)
-    assert_match "odo #{tag} (#{short_rev})", "#{version_output}"
-    #assert_match short_rev, version_output
+    short_rev = stable.instance_variable_get(:@resource).instance_variable_get(:@specs)[:revision].slice(0, 7)
+    assert_match "odo #{tag} (#{short_rev})", version_output
 
     # try set preference
     ENV["GLOBALODOCONFIG"] = "#{testpath}/preference.yaml"
