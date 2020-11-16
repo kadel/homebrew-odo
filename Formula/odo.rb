@@ -21,7 +21,7 @@ class Odo < Formula
 
   test do
     # test version
-    version_output = shell_output("#{bin}/odo version 2>&1")
+    version_output = shell_output("#{bin}/odo version 2>&1").strip
     tag = stable.instance_variable_get(:@resource).instance_variable_get(:@specs)[:tag]
     short_rev = stable.instance_variable_get(:@resource).instance_variable_get(:@specs)[:revision].slice(0, 8)
     assert_match "odo #{tag} (#{short_rev})", "#{version_output}"
