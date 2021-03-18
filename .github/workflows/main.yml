@@ -1,10 +1,6 @@
 name: check for new odo version
 
 on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
   schedule:
   - cron: "0 2 * * *"
   workflow_dispatch:
