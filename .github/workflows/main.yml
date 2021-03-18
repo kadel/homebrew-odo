@@ -1,6 +1,10 @@
 name: check for new odo version
 
 on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
   schedule:
   - cron: "0 2 * * *"
   workflow_dispatch:
@@ -11,9 +15,20 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: run updater
-        run: $GITHUB_WORKSPACE/tools/version/update -formulaFile $GITHUB_WORKSPACE/Formula/odo.rb -repo odo -org openshift
+        run: $GITHUB_WORKSPACE/tools/version-update -token ${{ secrets.GITHUB_TOKEN }} -formulaFile $GITHUB_WORKSPACE/Formula/odo.rb -repo odo -org openshift
       - name: Create commits
         run: |
           git config user.name 'Tomas Kral'
           git config user.email 'tomas.kral@gmail.com'
           git status
+          git commit -a -m "auto update formula"
+          git status
+      - name: Create Pull Request
+        id: cpr
+        uses: peter-evans/create-pull-request@v3
+        with:
+          base: master
+      - name: Check outputs
+        run: |
+          echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
+          echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}"

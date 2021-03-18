@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"log"
+	"net/http"
 	"os"
 	"regexp"
 	"strings"
@@ -45,15 +46,17 @@ func getFormulaInfo(formulaFile string) (string, string, error) {
 }
 
 // getLatestRelease returns tag and revision of the latest release in the repo
-func getLatestRelease(org string, repo string) (string, string, error) {
+func getLatestRelease(org string, repo string, token string) (string, string, error) {
 	var releaseTag string
 	var releaseRevision string
-
+	var tc *http.Client
 	ctx := context.Background()
-	ts := oauth2.StaticTokenSource(
-		&oauth2.Token{AccessToken: os.Getenv("GITHUB_TOKEN")},
-	)
-	tc := oauth2.NewClient(ctx, ts)
+	if token != "" {
+		ts := oauth2.StaticTokenSource(
+			&oauth2.Token{AccessToken: token},
+		)
+		tc = oauth2.NewClient(ctx, ts)
+	}
 	gh := github.NewClient(tc)
 	release, _, err := gh.Repositories.GetLatestRelease(ctx, org, repo)
 	if err != nil {
@@ -112,9 +115,11 @@ func main() {
 	var formulaFile string
 	var repo string
 	var org string
+	var token string
 	flag.StringVar(&formulaFile, "formulaFile", "", "Path to Homebrew formula file.")
 	flag.StringVar(&repo, "repo", "", "Name of the repo to check.")
 	flag.StringVar(&org, "org", "", "Name of the org where repo is.")
+	flag.StringVar(&token, "token", "", "GitHub token.")
 	flag.Parse()
 
 	if formulaFile == "" || repo == "" || org == "" {
@@ -128,7 +133,7 @@ func main() {
 	}
 	log.Printf("Formula information: tag=%s, revision=%s\n", formulaTag, formulaRevision)
 
-	releaseTag, releaseRevision, err := getLatestRelease(org, repo)
+	releaseTag, releaseRevision, err := getLatestRelease(org, repo, token)
 	if err != nil {
 		panic(err)
 	}
