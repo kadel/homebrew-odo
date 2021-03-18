@@ -1,0 +1,19 @@
+name: check for new odo version
+
+on:
+  schedule:
+  - cron: "0 2 * * *"
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: run updater
+        run: $GITHUB_WORKSPACE/tools/version/update -formulaFile $GITHUB_WORKSPACE/Formula/odo.rb -repo odo -org openshift
+      - name: Create commits
+        run: |
+          git config user.name 'Tomas Kral'
+          git config user.email 'tomas.kral@gmail.com'
+          git status
