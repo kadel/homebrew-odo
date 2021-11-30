@@ -15,6 +15,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: test
         run: |
+          brew uninstall go
           mkdir -p $(brew --repo)/Library/Taps/kadel
           ln -s $PWD $(brew --repo)/Library/Taps/kadel/homebrew-odo
           brew update-reset
